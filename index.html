@@ -28,19 +28,19 @@
     <table class="table table-bordered table-striped">
       <tr>
         <th>Vegetación</th>
-        <th>Densidad (kg/m<sup>2</sup>)</th>
+        <th>Biomasa (por m<sup>2</sup>)</th>
       </tr>
       <tr>
         <td>Pasto</td>
-        <td>0.1</td>
+        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_pasto">0.1 kg</td>
       </tr>
       <tr>
         <td>Monte bajo</td>
-        <td>0.8</td>
+        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_monte_bajo">0.8 kg</td>
       </tr>
       <tr>
         <td>Bosque</td>
-        <td>3.5</td>
+        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_bosque">3.5 kg</td>
       </tr>
     </table>
 
@@ -54,11 +54,15 @@
     </p>
 
     <script>
+      function valorMasa(texto) {
+        return parseFloat(texto.slice(0,-3));
+      }
+
       var biomasa = [
         null, // valor nulo para evitar el error por 1
-        0.1, // pastos
-        0.8, // monte bajo
-        3.5, // bosque
+        valorMasa(document.getElementById('biomasa_pasto').innerHTML), // pastos
+        valorMasa(document.getElementById('biomasa_monte_bajo').innerHTML), // monte bajo
+        valorMasa(document.getElementById('biomasa_bosque').innerHTML), // bosque
       ];
 
       function formulaByram(biomasa, velocidad) {
