@@ -41,12 +41,15 @@
       </tr>
     </table>
 
-    <p> Nos encontramos ante un incendio de <em>pasto</em> que se mueve a una velocidad de <em>10</em> m/min.
-      El valor de longitud de la llama esperado es <em>&lt;valor calculado&gt;</em>m.
+    <p> Nos encontramos ante un incendio de <em>pasto</em> que se mueve a una velocidad de <span data-var="velocidad" class="TKAdjustableNumber"> m/min</span> .
+      El valor de longitud de la llama esperado es <em>&lt;valor calculado&gt;</em> m.
     </p>
 
     <script>
-      console.log('Hola, mundo!');
+      var tangle = new Tangle(document, {
+        initialize: function () { this.velocidad = 10; },
+        update:     function () {  }
+       });
     </script>
   </body>
 </html>
