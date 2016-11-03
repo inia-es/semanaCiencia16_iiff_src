@@ -46,8 +46,15 @@
     </p>
 
     <script>
+      function formulaByram(biomasa, velocidad) {
+        // biomasa: kg/m^2
+        // velocidad: m/min
+        return 0.37 * Math.pow((15000 * biomasa * velocidad)/60, 0.46);
+      }
+
       var calcularLongitud = function(velocidad) {
-        return velocidad * 13;
+        var biomasa_pasto = 0.8;
+        return formulaByram(biomasa_pasto, velocidad);
       };
 
       var tangle = new Tangle(document, {
