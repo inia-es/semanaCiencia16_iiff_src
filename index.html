@@ -3,6 +3,8 @@
     <meta charset="utf-8">
     <title>INIA - Semana de la Ciencia 2016 ::: Explicaciones Explorables</title>
     <script src="js/Tangle.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" type="text/css">
     <link rel="stylesheet" href="css/TangleKit.css" type="text/css">
     <script type="text/javascript" src="js/mootools.js"></script>
     <script type="text/javascript" src="js/sprintf.js"></script>
@@ -11,18 +13,19 @@
   </head>
 
   <body>
+  <div class="container">
     <h1>Tamaño de la llama en incendios forestales</h1>
     <p>El tamaño de la llama en un incendio forestal puede ser calculado a partir de la velocidad de propagación, la cantidad de material y sus características según la fórmula:</p>
 
-    <img alt="" src="img/eqIntensidad.gif"><br/>
-    <img alt="" src="img/eqLongitud.gif"><br/>
-    <img alt="Fórmula de Byram" src="img/eqByram.gif">
+    <img alt="" src="img/eqIntensidad.gif" class="center-block"><br/>
+    <img alt="" src="img/eqLongitud.gif" class="center-block"><br/>
+    <img alt="Fórmula de Byram" src="img/eqByram.gif" class="center-block">
 
     <p>Conocemos algunos valores estándares de características de los materiales para distintos tipos
       de vegetación:
     </p>
 
-    <table>
+    <table class="table table-bordered table-striped">
       <tr>
         <th>Vegetación</th>
         <th>Densidad (kg/m<sup>2</sup>)</th>
@@ -62,5 +65,7 @@
         update:     function () { this.longitudLlama = calcularLongitud(this.velocidad); }
        });
     </script>
+
+  </div> <!-- .container -->
   </body>
 </html>
