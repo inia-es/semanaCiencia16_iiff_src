@@ -42,13 +42,17 @@
     </table>
 
     <p> Nos encontramos ante un incendio de <em>pasto</em> que se mueve a una velocidad de <span data-var="velocidad" class="TKAdjustableNumber"> m/min</span> .
-      El valor de longitud de la llama esperado es <em>&lt;valor calculado&gt;</em> m.
+      El valor de longitud de la llama esperado es <span data-var="longitudLlama"> m</span>.
     </p>
 
     <script>
+      var calcularLongitud = function(velocidad) {
+        return velocidad * 13;
+      };
+
       var tangle = new Tangle(document, {
         initialize: function () { this.velocidad = 10; },
-        update:     function () {  }
+        update:     function () { this.longitudLlama = calcularLongitud(this.velocidad); }
        });
     </script>
   </body>
