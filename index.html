@@ -35,20 +35,20 @@
         <td itemscope itemtype="http://schema.org/Mass" id="biomasa_pasto">0.1 kg</td>
       </tr>
       <tr>
-        <td>Monte bajo</td>
-        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_monte_bajo">0.8 kg</td>
+        <td>Matorral bajo</td>
+        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_matorral_bajo">0.8 kg</td>
       </tr>
       <tr>
-        <td>Bosque</td>
-        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_bosque">3.5 kg</td>
+        <td>Matorral alto</td>
+        <td itemscope itemtype="http://schema.org/Mass" id="biomasa_matorral alto">3.5 kg</td>
       </tr>
     </table>
 
     <p> Nos encontramos ante un incendio de
       <span data-min="1" data-max="3" data-var="combustible" class="TKAdjustableNumber TKSwitch">
         <span>pasto</span>
-        <span>monte bajo</span>
-        <span>bosque</span>
+        <span>matorral bajo</span>
+        <span>matorral alto</span>
       </span> que se mueve a una velocidad de <span data-step="0.5" data-min="0" data-max="10" data-var="velocidad" class="TKAdjustableNumber"> m/min</span> .
       El valor de longitud de la llama esperado es <span data-format="%.2f" data-var="longitudLlama"> m</span>.
     </p>
@@ -61,8 +61,8 @@
       var biomasa = [
         null, // valor nulo para evitar el error por 1
         valorMasa(document.getElementById('biomasa_pasto').innerHTML), // pastos
-        valorMasa(document.getElementById('biomasa_monte_bajo').innerHTML), // monte bajo
-        valorMasa(document.getElementById('biomasa_bosque').innerHTML), // bosque
+        valorMasa(document.getElementById('biomasa_matorral_bajo').innerHTML), // matorral bajo
+        valorMasa(document.getElementById('biomasa_matorral alto').innerHTML), // matorral alto
       ];
 
       function formulaByram(biomasa, velocidad) {
