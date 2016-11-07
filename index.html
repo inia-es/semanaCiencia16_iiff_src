@@ -54,7 +54,19 @@
     <p>
       El valor de longitud de la llama esperado es <span data-format="%.2f" data-var="longitudLlama" class="label label-info" style="font-size: 1.6em;"> m</span>.
     </p>
-
+    <div class = "row">
+      <div class="col-md-4">
+          <img width="100%" id="fuego" src="img/fuego_solo.png">
+      </div>
+      <div class="col-md-4">
+        <img width="100%" src="img/casa_arbol2.gif">
+      </div>
+      <div class="col-md-4">
+        <h2>Recomendación</h2>
+        <img src="img/aereo.gif">
+      </div>
+    </div>
+  </div>
     <script>
       function valorMasa(texto) {
         return parseFloat(texto.slice(0,-3));
@@ -73,6 +85,9 @@
         return 0.37 * Math.pow((15000 * biomasa * velocidad)/60, 0.46);
       }
 
+      var fuego = document.getElementById('fuego');
+      maxAlturaFuego = fuego.height;
+
       var tangle = new Tangle(document, {
         initialize: function () {
                       this.velocidad = 10;
@@ -80,6 +95,8 @@
                     },
         update:     function () {
                       this.longitudLlama = formulaByram(biomasa[this.combustible], this.velocidad);
+                      fuego.height = this.longitudLlama / 25 * maxAlturaFuego;
+                      fuego.style.marginTop = maxAlturaFuego - fuego.height + "px";
                     },
       });
     </script>
