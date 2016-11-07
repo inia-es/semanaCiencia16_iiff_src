@@ -63,7 +63,7 @@
       </div>
       <div class="col-md-4">
         <h2>Recomendación</h2>
-        <img src="img/aereo.gif">
+        <img src="img/aereo.gif" id="estrategia">
       </div>
     </div>
   </div>
@@ -85,8 +85,25 @@
         return 0.37 * Math.pow((15000 * biomasa * velocidad)/60, 0.46);
       }
 
+      function recomiendaEstrategia(longitud) {
+        if (longitud < 1.5) {
+          return 'batefuegos';
+        }
+        else if (longitud < 2.5) {
+          return 'autobomba';
+        }
+        else if (longitud < 4) {
+          return 'aereo';
+        }
+        else {
+          return 'contrafuego';
+        }
+      }
+
       var fuego = document.getElementById('fuego');
       maxAlturaFuego = fuego.height;
+
+      var estrategia = document.getElementById('estrategia');
 
       var tangle = new Tangle(document, {
         initialize: function () {
@@ -97,6 +114,9 @@
                       this.longitudLlama = formulaByram(biomasa[this.combustible], this.velocidad);
                       fuego.height = this.longitudLlama / 25 * maxAlturaFuego;
                       fuego.style.marginTop = maxAlturaFuego - fuego.height + "px";
+                      estrategia.src = 'img/' + recomiendaEstrategia(this.longitudLlama) + ".gif";
+                      estrategia.alt = recomiendaEstrategia(this.longitudLlama);
+                      estrategia.title = recomiendaEstrategia(this.longitudLlama);
                     },
       });
     </script>
