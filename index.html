@@ -64,6 +64,8 @@
       <div class="col-md-4">
         <h2>Recomendación</h2>
         <img src="img/aereo.gif" id="estrategia">
+        <br/>
+        <span data-var="estrategia" style="text-transform:capitalize;"></span>
       </div>
     </div>
   </div>
@@ -117,9 +119,10 @@
                       this.longitudLlama = formulaByram(biomasa[this.combustible], this.velocidad);
                       fuego.height = this.longitudLlama / 25 * maxAlturaFuego;
                       fuego.style.marginTop = maxAlturaFuego - fuego.height + "px";
-                      estrategia.src = 'img/' + recomiendaEstrategia(this.longitudLlama) + ".gif";
-                      estrategia.alt = recomiendaEstrategia(this.longitudLlama);
-                      estrategia.title = recomiendaEstrategia(this.longitudLlama);
+                      this.estrategia = recomiendaEstrategia(this.longitudLlama);
+                      estrategia.src = 'img/' + this.estrategia + ".gif";
+                      estrategia.alt = this.estrategia;
+                      estrategia.title = this.estrategia;
                     },
       });
     </script>
