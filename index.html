@@ -86,7 +86,10 @@
       }
 
       function recomiendaEstrategia(longitud) {
-        if (longitud < 1.5) {
+        if (longitud < 0.000001) {
+          return "";
+        }
+        else if (longitud < 1.5) {
           return 'batefuegos';
         }
         else if (longitud < 2.5) {
