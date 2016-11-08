@@ -70,61 +70,63 @@
     </div>
   </div>
     <script>
-      function valorMasa(texto) {
-        return parseFloat(texto.slice(0,-3));
-      }
-
-      var biomasa = [
-        null, // valor nulo para evitar el error por 1
-        valorMasa(document.getElementById('biomasa_pasto').innerHTML), // pastos
-        valorMasa(document.getElementById('biomasa_matorral_bajo').innerHTML), // matorral bajo
-        valorMasa(document.getElementById('biomasa_matorral alto').innerHTML), // matorral alto
-      ];
-
-      function formulaByram(biomasa, velocidad) {
-        // biomasa: kg/m^2
-        // velocidad: m/min
-        return 0.37 * Math.pow((15000 * biomasa * velocidad)/60, 0.46);
-      }
-
-      function recomiendaEstrategia(longitud) {
-        if (longitud < 0.000001) {
-          return "";
+      window.onload = function() {
+        function valorMasa(texto) {
+          return parseFloat(texto.slice(0,-3));
         }
-        else if (longitud < 1.5) {
-          return 'batefuegos';
-        }
-        else if (longitud < 2.5) {
-          return 'autobomba';
-        }
-        else if (longitud < 4) {
-          return 'aereo';
-        }
-        else {
-          return 'contrafuego';
-        }
-      }
 
-      var fuego = document.getElementById('fuego');
-      maxAlturaFuego = fuego.height;
+        var biomasa = [
+          null, // valor nulo para evitar el error por 1
+          valorMasa(document.getElementById('biomasa_pasto').innerHTML), // pastos
+          valorMasa(document.getElementById('biomasa_matorral_bajo').innerHTML), // matorral bajo
+          valorMasa(document.getElementById('biomasa_matorral alto').innerHTML), // matorral alto
+        ];
 
-      var estrategia = document.getElementById('estrategia');
+        function formulaByram(biomasa, velocidad) {
+          // biomasa: kg/m^2
+          // velocidad: m/min
+          return 0.37 * Math.pow((15000 * biomasa * velocidad)/60, 0.46);
+        }
 
-      var tangle = new Tangle(document, {
-        initialize: function () {
-                      this.velocidad = 10;
-                      this.combustible = 1;
-                    },
-        update:     function () {
-                      this.longitudLlama = formulaByram(biomasa[this.combustible], this.velocidad);
-                      fuego.height = this.longitudLlama / 25 * maxAlturaFuego;
-                      fuego.style.marginTop = maxAlturaFuego - fuego.height + "px";
-                      this.estrategia = recomiendaEstrategia(this.longitudLlama);
-                      estrategia.src = 'img/' + this.estrategia + ".gif";
-                      estrategia.alt = this.estrategia;
-                      estrategia.title = this.estrategia;
-                    },
-      });
+        function recomiendaEstrategia(longitud) {
+          if (longitud < 0.000001) {
+            return "";
+          }
+          else if (longitud < 1.5) {
+            return 'batefuegos';
+          }
+          else if (longitud < 2.5) {
+            return 'autobomba';
+          }
+          else if (longitud < 4) {
+            return 'aereo';
+          }
+          else {
+            return 'contrafuego';
+          }
+        }
+
+        var fuego = document.getElementById('fuego');
+        maxAlturaFuego = fuego.height;
+
+        var estrategia = document.getElementById('estrategia');
+
+        var tangle = new Tangle(document, {
+          initialize: function () {
+                        this.velocidad = 10;
+                        this.combustible = 1;
+                      },
+          update:     function () {
+                        this.longitudLlama = formulaByram(biomasa[this.combustible], this.velocidad);
+                        fuego.height = this.longitudLlama / 25 * maxAlturaFuego;
+                        fuego.style.marginTop = maxAlturaFuego - fuego.height + "px";
+                        this.estrategia = recomiendaEstrategia(this.longitudLlama);
+                        estrategia.src = 'img/' + this.estrategia + ".gif";
+                        estrategia.alt = this.estrategia;
+                        estrategia.title = this.estrategia;
+                      },
+        });
+      };
     </script>
 
   </div> <!-- .container -->
